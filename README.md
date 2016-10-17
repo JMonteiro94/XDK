@@ -1,2 +1,0 @@
-# XDK
-XDK simulator
