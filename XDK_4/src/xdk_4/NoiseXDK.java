@@ -1,4 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package xdk_4;
 
+/**
+ *
+ * @author User
+ */
 import java.util.ArrayList;
 
 /*
@@ -9,13 +19,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author NMVC
+ * @author User
  */
-public class xdkAcelerometro extends Thread implements Observable{
-     
+public class NoiseXDK extends Thread implements Observable{
+    
     ArrayList<Observer> observers = new ArrayList<>();
     xdk xdk = new xdk();
+    String nome;
     
+    public NoiseXDK(String x){
+        this.nome=x;
+    }
     
     @Override
     public void registerObserver(Observer observer) {
@@ -34,23 +48,21 @@ public class xdkAcelerometro extends Thread implements Observable{
             ob.update(x);
         }
     }
-       
+    
     @Override
     public void run(){
-        String s;
+        String sensor;
         try{
             while(true){
-                s=xdk.getAcelerometro();
-                 System.out.println("XDK: "+s);
-                notifyObservers(s);
-                Thread.sleep(1000);
+                sensor=xdk.getAcustica();
+                //System.out.println("XDK: "+sensor);
+                sensor+=" "+this.nome;
+                notifyObservers(sensor);
+                Thread.sleep(15000);
+                
             }  
         }catch(InterruptedException e){    
             System.out.println("got interrupted!");
         }
     }
-       
 }
-
-    
-

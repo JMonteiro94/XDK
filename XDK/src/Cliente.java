@@ -18,7 +18,7 @@ public class Cliente implements Observer{
         
     @Override
     public void update(String x){
-        System.out.println("Cliente :"+this.nome+" Sensor: "+x);
+        System.out.println("Cliente : "+this.nome+"|| Sensor: "+x);
     }
     
 }
