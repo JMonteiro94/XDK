@@ -26,10 +26,10 @@ public class Servidor extends Thread{
             Thread c =new Thread(xdk1);
             c.start();
             //2B
-            /*xdk2.registerObserver(x);
+            xdk2.registerObserver(x);
             xdk2.registerObserver(y);
             Thread t = new Thread(xdk2);
-            t.start();*/
+            t.start();
        }
 
 }

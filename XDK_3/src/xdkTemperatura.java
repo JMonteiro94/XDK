@@ -42,7 +42,7 @@ public class xdkTemperatura extends Thread implements Observable{
         try{
             while(true){
                 sensor=xdk.getTemperatura();
-                System.out.println("XDK: "+sensor);
+                //System.out.println("XDK: "+sensor);
                 if(!ant.equals(sensor)){
                     notifyObservers(sensor);
                     ant=sensor;

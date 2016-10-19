@@ -9,17 +9,13 @@ import java.util.ArrayList;
 
 /**
  *
- * @author User
+ * @author NMVC
  */
-public class NoiseXDK extends Thread implements Observable{
-    
+public class xdkAcelerometro extends Thread implements Observable{
+     
     ArrayList<Observer> observers = new ArrayList<>();
     xdk xdk = new xdk();
-    String nome;
     
-    public NoiseXDK(String x){
-        this.nome=x;
-    }
     
     @Override
     public void registerObserver(Observer observer) {
@@ -38,21 +34,23 @@ public class NoiseXDK extends Thread implements Observable{
             ob.update(x);
         }
     }
-    
+       
     @Override
     public void run(){
-        String sensor;
+        String s;
         try{
             while(true){
-                sensor=xdk.getAcustica();
-                System.out.println("XDK: "+sensor);
-                sensor+=" "+this.nome;
-                notifyObservers(sensor);
-                Thread.sleep(2000);
-                
+                s=xdk.getAcelerometro();
+                //System.out.println("XDK: "+s);
+                notifyObservers(s);
+                Thread.sleep(1000);
             }  
         }catch(InterruptedException e){    
             System.out.println("got interrupted!");
         }
     }
+       
 }
+
+    
+
